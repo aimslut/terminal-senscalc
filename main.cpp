@@ -41,8 +41,8 @@ const std::vector<GameYaw> GAME_YAWS = {
 
 // determine game and return the corresponding yaw
 double determine_game( const std::string& game ) {
-    auto it = std::find_if( GAME_YAWS.begin(), GAME_YAWS.end(), [&]( const GameYaw& game_yaw ) { return game_yaw.game == game; });
-    return ( it != GAME_YAWS.end() ) ? it->yaw : 0.0;
+    auto identified_game = std::find_if(GAME_YAWS.begin(), GAME_YAWS.end(), [&]( const GameYaw& game_yaw ) { return game_yaw.game == game; });
+    return ( identified_game != GAME_YAWS.end() ) ? identified_game->yaw : 0.0;
 }
 
 // calcs
