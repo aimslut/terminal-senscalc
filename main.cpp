@@ -154,13 +154,6 @@ void games() {
         else
             std::cout << ", ";
         std::cout << gameYaw.game;
-
-        /* output individual game yaws
-        if ( gameYaw.game.length() < 8 )
-            std::cout << clr::green << "\t\t = " << clr::reset;
-        else
-            std::cout << clr::green << "\t = " << clr::reset;
-        std::cout << gameYaw.yaw << " yaw\n"; */
     }
     std::cout << "\n";
     system( "pause" );
