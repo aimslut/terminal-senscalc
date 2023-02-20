@@ -40,7 +40,7 @@ const std::vector<GameYaw> GAME_YAWS = {
     {"ut", 0.596}
 };
 
-double determine_game(const std::string& game ) {
+double determine_game( const std::string& game ) {
     auto it = std::find_if( GAME_YAWS.begin(), GAME_YAWS.end(), [&]( const GameYaw& game_yaw ) { return game_yaw.game == game; });
     return ( it != GAME_YAWS.end() ) ? it->yaw : 0.0;
 }
@@ -50,7 +50,7 @@ double determine_game(const std::string& game ) {
 void get_cm( double yaw, double sens, int dpi ) {
     auto inc = yaw * sens;
     auto counts_per_rev = 360 / inc;
-    std::cout << " " << sens << " ingame = " << clr::green << counts_per_rev / dpi * cm_per_in << clr::reset << " cm/360\n\n ";
+    std::cout << " " << sens << " in game = " << clr::green << counts_per_rev / dpi * cm_per_in << clr::reset << " cm/360\n\n ";
     system( "pause" );
 }
 
@@ -58,7 +58,7 @@ void get_cm( double yaw, double sens, int dpi ) {
 void get_sens( double yaw, double cm, int dpi ) {
     auto counts_per_rev = cm / cm_per_in * dpi;
     auto inc = 360 / counts_per_rev;
-    std::cout << " " << cm << " cm/360 = " << clr::green << inc / yaw << clr::reset << " ingame\n ";
+    std::cout << " " << cm << " cm/360 = " << clr::green << inc / yaw << clr::reset << " in game\n ";
     system( "pause" );
 }
 
