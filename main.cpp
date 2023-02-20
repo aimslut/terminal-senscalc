@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <iostream>
 #include <vector>
+#include <charconv>
 #include "includes/colored_cout.h"
 
 const double cm_per_in = 2.54;
@@ -146,13 +147,25 @@ void games() {
 
     // group games with the same yaw value
     double current_yaw = -1;
+    bool first_iteration = true;
     for ( const auto& gameYaw : sorted ) {
         if ( gameYaw.yaw != current_yaw ) {
             current_yaw = gameYaw.yaw;
-            std::cout << "\n\t" << clr::green << current_yaw << clr::reset << ": \n\t\t";
+            char buffer[50];
+            auto result = std::to_chars( buffer, buffer + sizeof( buffer ), current_yaw, std::chars_format::general, 11 );
+            *result.ptr = '\0'; // add a null terminator
+            std::string num_str(buffer);
+            if (num_str.length() < 8) {
+                if ( !first_iteration ) std::cout << "\n";
+                std::cout << "\t" << num_str << clr::green << "\t\t-> " << clr::reset;
+            }
+            else {
+                if ( !first_iteration ) std::cout << "\n";
+                std::cout << "\t" << num_str << clr::green << "\t-> " << clr::reset;
+            }
+            first_iteration = false;
         }
-        else
-            std::cout << ", ";
+        else std::cout << ", ";
         std::cout << gameYaw.game;
     }
     std::cout << "\n";
