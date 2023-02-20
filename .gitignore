@@ -1,0 +1,16 @@
+
+.idea/codeStyles/codeStyleConfig.xml
+*.xml
+*.json
+*.bin
+*.cmake
+*.txt
+*.ninja
+*.check_cache
+*.log
+*.obj
+*.exe
+cmake-build-debug/.ninja_deps
+cmake-build-debug/.ninja_log
+cmake-build-debug/CMakeFiles/3.23.2/CompilerIdC/CMakeCCompilerId.c
+cmake-build-debug/CMakeFiles/3.23.2/CompilerIdCXX/CMakeCXXCompilerId.cpp
