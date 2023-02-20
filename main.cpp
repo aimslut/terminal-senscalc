@@ -5,7 +5,6 @@
 
 const double cm_per_in = 2.54;
 
-// determine game and return the corresponding yaw
 struct GameYaw {
     std::string game;
     double yaw;
@@ -40,6 +39,7 @@ const std::vector<GameYaw> GAME_YAWS = {
     {"ut", 0.596}
 };
 
+// determine game and return the corresponding yaw
 double determine_game( const std::string& game ) {
     auto it = std::find_if( GAME_YAWS.begin(), GAME_YAWS.end(), [&]( const GameYaw& game_yaw ) { return game_yaw.game == game; });
     return ( it != GAME_YAWS.end() ) ? it->yaw : 0.0;
